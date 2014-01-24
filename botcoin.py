@@ -1,3 +1,17 @@
+'''
+    botcoin.py
+
+    Thar be coin in that dark Web.
+
+    @fileOverview
+
+      LoopingCall on an RSS feed supplied by a Google Drive generator executed
+      as Google Script that macros Twitter searches.
+
+    @sd:23 01 2014.21.46.08
+    @nerdfiles
+'''
+
 from twisted.words.protocols import irc
 from twisted.internet.task import LoopingCall
 from twisted.internet import reactor, protocol
