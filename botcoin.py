@@ -8,6 +8,8 @@
       LoopingCall on an RSS feed supplied by a Google Drive generator executed
       as Google Script that macros Twitter searches.
 
+      Login to an IRC
+
     @sd:23 01 2014.21.46.08
     @nerdfiles
 '''
