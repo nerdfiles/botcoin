@@ -6,10 +6,10 @@ from twitter import *
 
 import feedparser
 
-# consumer_key = "XpaitKsl1dAYbYTGCkw"
-# consumer_secret = "4m9QVS2HubbccRskIY2C1iufwBxVEBeIHXYixwLmRMo"
-# access_key = "286402780-0oXOIaYC4B7ypQWE84Z0dCoXnaN1QZB9aocFzzG0"
-# access_secret = "u1W0FmSPBO4AC8tvzuHG9W3QWGSMgIeE6QBYFvN6Jli6Z"
+# consumer_key = ""
+# consumer_secret = ""
+# access_key = ""
+# access_secret = ""
 
 # https://github.com/sixohsix/twitter/blob/master/twitter/oauth.py#L78
 auth = OAuth(access_key, access_secret, consumer_key, consumer_secret)
