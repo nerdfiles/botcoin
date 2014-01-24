@@ -15,22 +15,8 @@ class Scraper
 
     url = ScriptApp.getService().getUrl()
 
-    if url:
+    if url
       @connectTwitter()
-
-    msg = ''
-    msg += 'Sample RSS Feeds for Twitter\n'
-    msg += '============================'
-    msg += '\n\nTwitter Timeline of user @labnol'
-    msg += '\n' + url + '?action=timeline&q=labnol'
-    msg += '\n\nTwitter Favorites of user @labnol'
-    msg += '\n' + url + '?action=favorites&q=labnol'
-    msg += '\n\nTwitter List labnol/friends-in-india'
-    msg += '\n' + url + '?action=list&q=labnol/friends-in-india'
-    msg += '\n\nTwitter Search for New York'
-    msg += '\n' + url + '?action=search&q=new+york'
-    msg += '\n\nYou should replace the value of 'q' parameter in the URLs as per requirement.'
-    msg += '\n\nFor help, please refer to http://www.labnol.org/?p=27931'
     MailApp.sendEmail Session.getActiveUser().getEmail(), 'Twitter RSS Feeds', msg
 
   @JSONtoRSS: (json, type, key) ->
@@ -42,36 +28,35 @@ class Scraper
       'oAuthServiceName':'twitter',
       'oAuthUseToken':'always'
 
-    try:
+    try
 
       result = UrlFetchApp.fetch json, options
 
-      if result.getResponseCode() === 200:
+      if result.getResponseCode() == 200
 
         tweets = Utilities.jsonParse result.getContentText()
 
-        if type == 'search':
+        if type == 'search'
           tweets = tweets.statuses
 
-        if (tweets):
+        if tweets
 
           len = tweets.length
           rss = ''
 
-          if (len):
+          if (len)
 
-            rss  = '<?xml version='1.0'?><rss version='2.0'>'
+            rss  = '<?xml version=\'1.0\'?><rss version=\'2.0\'>'
             rss += ' <channel><title>Twitter ' + type + ': ' + key + '</title>'
             rss += ' <link>' + @htmlentities (json) + '</link>'
             rss += ' <pubDate>' + new Date() + '</pubDate>'
-
-            for (i=0; i<len; i++):
+            for i in [0..len] by 1
               sender = tweets[i].user.screen_name
               tweet  = @htmlentities tweets[i].text
               rss += '<item><title>' + sender + ': ' + tweet + '</title>'
               rss += ' <author>' + tweets[i].user.name + ' (@' + sender + ')</author>'
               rss += ' <pubDate>' + tweets[i].created_at + '</pubDate>'
-              rss += ' <guid isPermaLink='false'>' + tweets[i].id_str + '</guid>'
+              rss += ' <guid isPermaLink=\'false\'>' + tweets[i].id_str + '</guid>'
               rss += ' <link>https://twitter.com/' + sender + '/statuses/' + tweets[i].id_str + '</link>'
               rss += ' <description>' + tweet + '</description>'
               rss += '</item>'
@@ -79,7 +64,7 @@ class Scraper
 
             rss
 
-    catch (e) ->
+    catch: (e) ->
 
       Logger.loge.toString()
 
@@ -98,7 +83,7 @@ class Scraper
 
       result = UrlFetchApp.fetch search, options
 
-    catch (e) ->
+    catch: (e) ->
 
       Logger.log e.toString()
 
