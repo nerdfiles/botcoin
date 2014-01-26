@@ -29,3 +29,11 @@ Then visualize your codebase as a region of tags in Twitter.
           Feed to GAS
           Loop over terms
           Timing term collection
+
+#Ideas
+
+https://github.com/OmerShapira/Syntactic allows for lexical categorization. Do
+I use Twitter as the Control? Or IRC chans?
+
+I'm sure the sizes of lexical groups will tell us something about intelligence
+across Internet denizen subspaces.
