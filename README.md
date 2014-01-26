@@ -11,5 +11,21 @@ at ``./src/twitter.search.feed.coffee``.
 
 #Why?
 
-I wanted to spam a chatroom. Next I'll do fuzzy matching on IRC handles,
-then generate bots based on the list. Create thematic feeds based on 
+I wanted to spam a chatroom.
+
+The key here is that the GA Script accepts a CGI parameter (q). It can be fed
+any arbitrary string, like a member list of a chan or a recording of a chan.
+
+#What Twitter knows
+
+You can even collect all the RSS feeds Twitter can think of based on a syntatic
+analysis of your codebase. Use reserved like "controller" or "event" often?
+
+Then visualize your codebase as a region of tags in Twitter.
+
+#Twisted
+
+    @TODO Read channel content
+          Feed to GAS
+          Loop over terms
+          Timing term collection
