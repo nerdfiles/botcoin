@@ -108,8 +108,6 @@ class Bot(irc.IRCClient):
 
     def sendMessage(self, msg):
         print(msg)
-        # before you sendMessage, be sure to prepMessage(msg)
-        # TODO: have prepMessage here, instead of seperate function
         self.sendLine("PRIVMSG %s :%s" % (self.channel, msg))
 
 
