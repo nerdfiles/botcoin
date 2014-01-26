@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # For IRC Bot API.
 from twisted.words.protocols import irc
 from twisted.internet.task import LoopingCall
