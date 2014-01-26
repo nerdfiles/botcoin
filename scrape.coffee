@@ -1,4 +1,10 @@
-
+# ./scrape.coffee
+# @see http://www.labnol.org/?p=27931
+#
+# This is a rendition in CoffeeScript. Compile it to JS, deploy it from Google
+# Drive.
+#
+# @nerdfiles
 Scraper.start 'CONSUMER_KEY', 'CONSUMER_SECRET'
 
 class Scraper
@@ -17,7 +23,9 @@ class Scraper
 
     if url
       @connectTwitter()
-    MailApp.sendEmail Session.getActiveUser().getEmail(), 'Twitter RSS Feeds', msg
+    MailApp.sendEmail Session.
+      getActiveUser().
+      getEmail(), 'Twitter RSS Feeds', msg
 
   @JSONtoRSS: (json, type, key) ->
 
@@ -54,10 +62,13 @@ class Scraper
               sender = tweets[i].user.screen_name
               tweet  = @htmlentities tweets[i].text
               rss += '<item><title>' + sender + ': ' + tweet + '</title>'
-              rss += ' <author>' + tweets[i].user.name + ' (@' + sender + ')</author>'
+              rss += ' <author>' + tweets[i].user.name + ' (@' + sender +
+                ')</author>'
               rss += ' <pubDate>' + tweets[i].created_at + '</pubDate>'
-              rss += ' <guid isPermaLink=\'false\'>' + tweets[i].id_str + '</guid>'
-              rss += ' <link>https://twitter.com/' + sender + '/statuses/' + tweets[i].id_str + '</link>'
+              rss += ' <guid isPermaLink=\'false\'>' + tweets[i].id_str +
+                '</guid>'
+              rss += ' <link>https://twitter.com/' + sender + '/statuses/' +
+                tweets[i].id_str + '</link>'
               rss += ' <description>' + tweet + '</description>'
               rss += '</item>'
             rss += '</channel></rss>'
@@ -103,5 +114,7 @@ class Scraper
     oauthConfig.setAccessTokenUrl 'https://api.twitter.com/oauth/access_token'
     oauthConfig.setRequestTokenUrl 'https://api.twitter.com/oauth/request_token'
     oauthConfig.setAuthorizationUrl 'https://api.twitter.com/oauth/authorize'
-    oauthConfig.setConsumerKey ScriptProperties.getProperty 'TWITTER_CONSUMER_KEY'
-    oauthConfig.setConsumerSecret ScriptProperties.getProperty 'TWITTER_CONSUMER_SECRET'
+    oauthConfig.setConsumerKey ScriptProperties.
+      getProperty 'TWITTER_CONSUMER_KEY'
+    oauthConfig.setConsumerSecret ScriptProperties.
+      getProperty 'TWITTER_CONSUMER_SECRET'

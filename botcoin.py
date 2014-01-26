@@ -18,20 +18,7 @@ from twisted.words.protocols import irc
 from twisted.internet.task import LoopingCall
 from twisted.internet import reactor, protocol
 
-from twitter import *
-
 import feedparser
-
-# consumer_key = ""
-# consumer_secret = ""
-# access_key = ""
-# access_secret = ""
-
-# https://github.com/sixohsix/twitter/blob/master/twitter/oauth.py#L78
-auth = OAuth(access_key, access_secret, consumer_key, consumer_secret)
-
-# https://github.com/sixohsix/twitter/blob/master/twitter/api.py#L241
-t = Twitter(auth=auth)
 
 user = "market"  # @market, essentially.
 Channel = "irc.freenode.com"  # Market context.
