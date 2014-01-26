@@ -24,8 +24,8 @@ import feedparser
 '''
 
 # Config.
-user = "market"  # @market, essentially.
 Channel = "irc.freenode.com"  # Market context.
+q = 'freebtc'
 
 
 class Bot(irc.IRCClient):
@@ -57,6 +57,9 @@ class Bot(irc.IRCClient):
         lc.start(70)
 
     def privmsg(self, user, channel, msg):
+        '''
+            @see http://twistedmatrix.com/documents/8.2.0/api/twisted.words.protocols.irc.IRCClient.html#privmsg
+        '''
 
         user = user.split("!", 1)[0]
 
@@ -77,7 +80,7 @@ class Bot(irc.IRCClient):
         '''
 
         feed = feedparser.parse(
-            'https://script.google.com/macros/s/AKfycbwk-KM8gW-QDNTapXRNzQqqjHR_sa9cS12fPkGzxPW6Q4LWGmSb/exec?action=search&q=freebtc')
+            'https://script.google.com/macros/s/AKfycbwk-KM8gW-QDNTapXRNzQqqjHR_sa9cS12fPkGzxPW6Q4LWGmSb/exec?action=search&q=' + q)
 
         self.results = feed['entries'][self.callCounter]['title']
 
