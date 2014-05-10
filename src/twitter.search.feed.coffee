@@ -11,16 +11,12 @@ class Scraper
 
   # Get your Twitter keys from dev.twitter.com
   @start: (key, secret) ->
-
     @initialize()
 
   @initialize: ( key, secret ) ->
-
     ScriptProperties.setProperty 'TWITTER_CONSUMER_KEY', key
     ScriptProperties.setProperty 'TWITTER_CONSUMER_SECRET', secret
-
     url = ScriptApp.getService().getUrl()
-
     if url
       @connectTwitter()
     MailApp.sendEmail Session.
@@ -28,32 +24,21 @@ class Scraper
       getEmail(), 'Twitter RSS Feeds', msg
 
   @JSONtoRSS: (json, type, key) ->
-
     @oAuth()
-
     options:
       'method': 'get',
       'oAuthServiceName':'twitter',
       'oAuthUseToken':'always'
-
     try
-
       result = UrlFetchApp.fetch json, options
-
       if result.getResponseCode() == 200
-
         tweets = Utilities.jsonParse result.getContentText()
-
         if type == 'search'
           tweets = tweets.statuses
-
         if tweets
-
           len = tweets.length
           rss = ''
-
           if (len)
-
             rss  = '<?xml version=\'1.0\'?><rss version=\'2.0\'>'
             rss += ' <channel><title>Twitter ' + type + ': ' + key + '</title>'
             rss += ' <link>' + @htmlentities (json) + '</link>'
@@ -72,35 +57,23 @@ class Scraper
               rss += ' <description>' + tweet + '</description>'
               rss += '</item>'
             rss += '</channel></rss>'
-
             rss
-
     catch: (e) ->
-
       Logger.loge.toString()
 
   @connectTwitter: () ->
-
     @oAuth()
-
     search = 'https://api.twitter.com/1.1/application/rate_limit_status.json'
-
     options:
       'method': 'get'
       'oAuthServiceName':'twitter'
       'oAuthUseToken':'always'
-
     try:
-
       result = UrlFetchApp.fetch search, options
-
     catch: (e) ->
-
       Logger.log e.toString()
 
-
   @htmlentities: (str) ->
-
     str = str.replace /&/g, '&amp;'
     str = str.replace />/g, '&gt;'
     str = str.replace /</g, '&lt;'
@@ -109,7 +82,6 @@ class Scraper
     str
 
   @oAuth: () ->
-
     oauthConfig = UrlFetchApp.addOAuthService 'twitter'
     oauthConfig.setAccessTokenUrl 'https://api.twitter.com/oauth/access_token'
     oauthConfig.setRequestTokenUrl 'https://api.twitter.com/oauth/request_token'
