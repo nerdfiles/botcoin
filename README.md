@@ -37,3 +37,7 @@ I use Twitter as the Control? Or IRC chans?
 
 I'm sure the sizes of lexical groups will tell us something about intelligence
 across Internet denizen subspaces.
+
+###Applications
+
+1. Discover youth ranges, distribute LGBT youtube video links.
