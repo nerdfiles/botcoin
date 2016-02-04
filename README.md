@@ -1,6 +1,6 @@
 #botcoin
 
-It's an RSS feed generator written in GoogleAppScript, based on JavaScript.
+Twitter-driven (OAuth) RSS feed generator written in GoogleAppScript, based on JavaScript, that uses event-driven networking engine Twisted to execute simple `LoopingCall` commands into IRC channels.
 
 ##Authentication
 
