@@ -1,5 +1,4 @@
 # ./scrape.coffee
-# @see http://www.labnol.org/?p=27931
 #
 # This is a rendition in CoffeeScript. Compile it to JS, deploy it from Google
 # Drive.
